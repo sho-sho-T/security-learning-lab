@@ -1,0 +1,17 @@
+services:
+  app:
+    container_name: security-learning-lab-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app
+    volumes:
+      - .:/app
+    environment:
+      TZ: Asia/Tokyo
+      # Next.js の開発サーバー用
+      WATCHPACK_POLLING: "true"
+    ports:
+      - "3000:3000"
+    tty: true
+    stdin_open: true
