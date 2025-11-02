@@ -1,0 +1,16 @@
+services:
+  app:
+    container_name: security-learning-lab-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app
+    volumes:
+      - ./app:/app
+      - node_modules:/app/node_modules
+    environment:
+      TZ: Asia/Tokyo
+    tty: true
+
+volumes:
+  node_modules:
