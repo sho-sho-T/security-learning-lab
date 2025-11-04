@@ -1,22 +1,9 @@
 {
   "name": "security-learning-lab",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
-  "features": {
-    "ghcr.io/devcontainers-extra/features/bun:1": {},
-    "ghcr.io/devcontainers/features/git:1": {},
-    "ghcr.io/devcontainers/features/common-utils:2": {}
-  },
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "biomejs.biome",
-        "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
-        "eamodio.gitlens",
-        "bradlc.vscode-tailwindcss"
-      ]
-    }
-  },
+  "dockerComposeFile": "../compose.yaml",
+  "service": "app",
+  "workspaceFolder": "/app",
+  "updateRemoteUserUID": true,
 
   // コンテナ起動時のコマンド
   "postCreateCommand": "bun install",
@@ -29,6 +16,5 @@
     "source=nextjs_node_modules,target=/workspaces/${localWorkspaceFolderBasename}/node_modules,type=volume",
     "source=bun_cache,target=/home/node/.bun,type=volume"
   ],
-
-  "remoteUser": "node"
+  "remoteUser": "root"
 }
