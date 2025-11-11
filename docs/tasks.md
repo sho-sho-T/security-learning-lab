@@ -24,10 +24,10 @@
 **実装順**: #2 → #3
 
 **チェックリスト**:
-- [ ] `src/types/topic.ts` を作成
-- [ ] `src/types/exercise.ts` を作成
-- [ ] TypeScriptコンパイルエラーなし
-- [ ] Biomeのlintがパス
+- [x] `src/types/topic.ts` を作成
+- [x] `src/types/exercise.ts` を作成
+- [x] TypeScriptコンパイルエラーなし
+- [x] Biomeのlintがパス
 
 ---
 
@@ -44,9 +44,9 @@
 **実装順**: #4
 
 **チェックリスト**:
-- [ ] `src/data/topics.ts` を作成
-- [ ] XSSトピックデータを定義
-- [ ] TypeScriptの型チェックがパス
+- [x] `src/data/topics.ts` を作成
+- [x] XSSトピックデータを定義
+- [x] TypeScriptの型チェックがパス
 
 ---
 
