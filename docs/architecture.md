@@ -4,7 +4,7 @@
 
 ## 1. 技術スタック
 
-- **フレームワーク**: Next.js 15 (App Router)
+- **フレームワーク**: Next.js 16 (App Router)
 - **言語**: TypeScript
 - **スタイリング**: Tailwind CSS + shadcn/ui
 - **リンター**: Biome
