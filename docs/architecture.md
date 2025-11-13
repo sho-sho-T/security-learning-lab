@@ -33,19 +33,27 @@
 
 ```
 src/
-├── app/                     # Next.js App Router
+├── app/                     # Next.js App Router (ページ = コンポーネント呼び出しのみ)
 │   ├── layout.tsx
-│   ├── page.tsx
+│   ├── page.tsx             # Home コンポーネントを呼び出す
 │   └── xss/
-│       ├── page.tsx
+│       ├── page.tsx         # XSS コンポーネントを呼び出す
 │       └── reflected/
-│           └── page.tsx
+│           └── page.tsx     # ReflectedXSS コンポーネントを呼び出す
 │
 ├── components/              # Reactコンポーネント
 │   ├── ui/                  # shadcn/ui
 │   ├── layout/              # Header, Footer
 │   ├── home/                # TopicCard
-│   └── xss/                 # XSS学習用
+│   ├── pages/               # ページコンポーネント (各ページの UI)
+│   │   ├── Home.tsx         # ホームページの UI
+│   │   ├── XSS.tsx          # XSS理論セクション
+│   │   └── ReflectedXSS.tsx # Reflected XSS演習
+│   └── xss/                 # XSS学習用コンポーネント
+│       ├── TheorySection.tsx
+│       ├── VulnerableDemo.tsx
+│       ├── CodeComparison.tsx
+│       └── PayloadExample.tsx
 │
 ├── lib/                     # ユーティリティ
 ├── data/                    # 静的データ
@@ -97,17 +105,28 @@ export interface Payload {
 
 ## 5. コンポーネント設計
 
+### ページ構成原則
+
+- **`app/page.tsx` (ページファイル)**: コンポーネント呼び出しのみ（UI ロジックなし）
+- **`components/pages/*.tsx` (ページコンポーネント)**: 各ページの UI と状態管理
+- **`components/xss/*.tsx`**: 再利用可能な機能別コンポーネント
+
 ### 主要コンポーネント
 
 ```typescript
-// レイアウト
+// ページコンポーネント（components/pages/）
+Home.tsx            // ホームページ（TopicCard 表示）
+XSS.tsx             // XSS理論学習
+ReflectedXSS.tsx    // Reflected XSS演習
+
+// レイアウト（components/layout/）
 Header.tsx          // グローバルナビゲーション
 Footer.tsx          // 免責事項
 
-// ホーム
+// 汎用コンポーネント（components/home/）
 TopicCard.tsx       // トピックカード表示
 
-// XSS学習
+// 機能別コンポーネント（components/xss/）
 TheorySection.tsx   // 理論セクション
 VulnerableDemo.tsx  // 脆弱なデモフォーム
 CodeComparison.tsx  // コード比較表示
