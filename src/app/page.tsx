@@ -37,14 +37,6 @@ export default function Home() {
             ))}
           </div>
         </div>
-
-        {/* Footer */}
-        <footer className="mt-16 border-t border-zinc-200 pt-8 text-center text-sm text-zinc-600 dark:border-zinc-800 dark:text-zinc-400">
-          <p className="mb-2">
-            ⚠️ このアプリケーションは教育目的のみで使用してください
-          </p>
-          <p>© 2024 Security Learning Lab. All rights reserved.</p>
-        </footer>
       </main>
     </div>
   );
