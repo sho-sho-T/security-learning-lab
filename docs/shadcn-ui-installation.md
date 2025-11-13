@@ -1,63 +1,63 @@
-# shadcn/ui Installation Guide with Bun
+# Bunを使用したshadcn/uiインストールガイド
 
-This guide provides comprehensive instructions for installing and using shadcn/ui components in this Next.js 16 + React 19 + TailwindCSS v4 project with Bun as the package manager.
+このガイドでは、BunをパッケージマネージャーとするNext.js 16 + React 19 + TailwindCSS v4プロジェクトにおけるshadcn/uiコンポーネントのインストールと使用方法について包括的に説明します。
 
-## Table of Contents
+## 目次
 
-1. [Prerequisites](#prerequisites)
-2. [Initial Setup](#initial-setup)
-3. [Installation Methods](#installation-methods)
-4. [Available Components](#available-components)
-5. [Usage Examples](#usage-examples)
-6. [Troubleshooting](#troubleshooting)
-7. [Best Practices](#best-practices)
+1. [前提条件](#前提条件)
+2. [初期セットアップ](#初期セットアップ)
+3. [インストール方法](#インストール方法)
+4. [利用可能なコンポーネント](#利用可能なコンポーネント)
+5. [使用例](#使用例)
+6. [トラブルシューティング](#トラブルシューティング)
+7. [ベストプラクティス](#ベストプラクティス)
 
-## Prerequisites
+## 前提条件
 
-### Required Software
+### 必要なソフトウェア
 
-Before installing shadcn/ui components, ensure you have the following software installed:
+shadcn/uiコンポーネントをインストールする前に、以下のソフトウェアがインストールされていることを確認してください：
 
 #### 1. Node.js
-- **Version**: v20 or higher
-- **Installation**: Download from [nodejs.org](https://nodejs.org/)
-- **Verification**:
+- **バージョン**: v20以上
+- **インストール**: [nodejs.org](https://nodejs.org/)からダウンロード
+- **確認方法**:
   ```bash
-  node --version  # Should show v20.x or higher
+  node --version  # v20.x以上が表示されるはずです
   ```
 
-#### 2. Bun (Recommended Package Manager)
-- **Version**: Latest stable version
-- **Installation**:
+#### 2. Bun（推奨パッケージマネージャー）
+- **バージョン**: 最新の安定版
+- **インストール**:
   ```bash
-  # macOS, Linux, and WSL
+  # macOS、Linux、WSL
   curl -fsSL https://bun.sh/install | bash
 
   # Windows (PowerShell)
   irm bun.sh/install.ps1 | iex
   ```
-- **Verification**:
+- **確認方法**:
   ```bash
-  bun --version  # Should show the installed version
+  bun --version  # インストールされたバージョンが表示されます
   ```
 
-**Note**: While Bun is recommended for this project, you can also use npm, yarn, or pnpm.
+**注意**: このプロジェクトではBunを推奨していますが、npm、yarn、pnpmも使用できます。
 
-### Project Setup
+### プロジェクトセットアップ
 
-This project already has the following configured:
+このプロジェクトには既に以下が設定されています：
 
-- ✅ **Next.js 16** with App Router
+- ✅ **Next.js 16** (App Router使用)
 - ✅ **React 19.2.0**
-- ✅ **TailwindCSS v4** with PostCSS
+- ✅ **TailwindCSS v4** (PostCSS使用)
 - ✅ **TypeScript 5**
-- ✅ **shadcn/ui configuration** (`components.json`)
+- ✅ **shadcn/ui設定** (`components.json`)
 
-## Initial Setup
+## 初期セットアップ
 
-### 1. Understanding the Configuration
+### 1. 設定の理解
 
-The project includes a `components.json` file that defines the shadcn/ui setup:
+プロジェクトには、shadcn/uiのセットアップを定義する`components.json`ファイルが含まれています：
 
 ```json
 {
@@ -83,16 +83,16 @@ The project includes a `components.json` file that defines the shadcn/ui setup:
 }
 ```
 
-**Key Configuration Points**:
-- **Style**: "new-york" - Modern, refined component style
-- **RSC**: Enabled - Components are React Server Component compatible
-- **Base Color**: "stone" - Neutral color palette
-- **CSS Variables**: Enabled for dynamic theming
-- **Icon Library**: lucide-react for consistent icons
+**主要な設定ポイント**:
+- **Style**: "new-york" - モダンで洗練されたコンポーネントスタイル
+- **RSC**: 有効 - React Server Componentに対応
+- **Base Color**: "stone" - ニュートラルなカラーパレット
+- **CSS Variables**: 動的なテーマ設定のために有効化
+- **Icon Library**: 一貫したアイコンのためのlucide-react
 
-### 2. Core Dependencies
+### 2. コア依存関係
 
-The following dependencies are required and already installed:
+以下の依存関係が必要で、既にインストールされています：
 
 ```json
 {
@@ -106,11 +106,11 @@ The following dependencies are required and already installed:
 }
 ```
 
-### 3. Utility Function
+### 3. ユーティリティ関数
 
-The project includes a `cn()` utility function for merging Tailwind classes:
+プロジェクトには、Tailwindクラスをマージするための`cn()`ユーティリティ関数が含まれています：
 
-**Location**: `src/lib/utils.ts`
+**場所**: `src/lib/utils.ts`
 
 ```typescript
 import { type ClassValue, clsx } from "clsx";
@@ -121,134 +121,134 @@ export function cn(...inputs: ClassValue[]) {
 }
 ```
 
-## Installation Methods
+## インストール方法
 
-### Method 1: Using the shadcn CLI (Recommended)
+### 方法1: shadcn CLIを使用（推奨）
 
-The shadcn CLI automatically handles component installation, dependency management, and file placement.
+shadcn CLIは、コンポーネントのインストール、依存関係の管理、ファイルの配置を自動的に処理します。
 
-#### Installing Individual Components with Bun
+#### Bunを使用した個別コンポーネントのインストール
 
 ```bash
-# Install a specific component
+# 特定のコンポーネントをインストール
 npx shadcn@latest add button
 
-# Install multiple components at once
+# 複数のコンポーネントを一度にインストール
 npx shadcn@latest add button card input
 
-# Install a component and its dependencies
+# コンポーネントとその依存関係をインストール
 npx shadcn@latest add form
 ```
 
-**Note**: Even when using Bun as your package manager, you should use `npx` (not `bunx`) for the shadcn CLI, as the CLI will respect your project's package manager configuration.
+**注意**: Bunをパッケージマネージャーとして使用している場合でも、shadcn CLIには`npx`を使用してください（`bunx`ではなく）。CLIがプロジェクトのパッケージマネージャー設定を尊重します。
 
-#### What Happens During Installation
+#### インストール時の動作
 
-When you run the add command:
+addコマンドを実行すると：
 
-1. **Dependency Check**: Installs required peer dependencies (e.g., `@radix-ui/*` packages)
-2. **Component Creation**: Creates the component file in `src/components/ui/`
-3. **Type Safety**: Includes full TypeScript types
-4. **Customization**: Uses your `components.json` configuration
+1. **依存関係チェック**: 必要なピア依存関係（例：`@radix-ui/*`パッケージ）をインストール
+2. **コンポーネント作成**: `src/components/ui/`にコンポーネントファイルを作成
+3. **型安全性**: 完全なTypeScript型を含む
+4. **カスタマイズ**: `components.json`の設定を使用
 
-### Method 2: Installing All Components
+### 方法2: すべてのコンポーネントをインストール
 
-To install all available components at once:
+すべての利用可能なコンポーネントを一度にインストールするには：
 
 ```bash
 npx shadcn@latest add --all
 ```
 
-**Warning**: This will add many files and dependencies. Only use if you need most components.
+**警告**: これにより多数のファイルと依存関係が追加されます。ほとんどのコンポーネントが必要な場合のみ使用してください。
 
-### Method 3: Manual Installation
+### 方法3: 手動インストール
 
-For advanced users who want more control:
+より細かい制御が必要な上級ユーザー向け：
 
-1. **Install Dependencies**:
+1. **依存関係をインストール**:
    ```bash
-   bun add @radix-ui/react-[component-name]
+   bun add @radix-ui/react-[コンポーネント名]
    ```
 
-2. **Copy Component Code**: 
-   - Visit [ui.shadcn.com](https://ui.shadcn.com)
-   - Navigate to the desired component
-   - Copy the source code
-   - Create file in `src/components/ui/[component-name].tsx`
-   - Paste and adjust imports if needed
+2. **コンポーネントコードをコピー**: 
+   - [ui.shadcn.com](https://ui.shadcn.com)にアクセス
+   - 目的のコンポーネントに移動
+   - ソースコードをコピー
+   - `src/components/ui/[コンポーネント名].tsx`にファイルを作成
+   - 必要に応じてインポートを調整
 
-## Available Components
+## 利用可能なコンポーネント
 
-shadcn/ui provides a rich collection of accessible, customizable components:
+shadcn/uiは、アクセシブルでカスタマイズ可能なコンポーネントの豊富なコレクションを提供します：
 
-### Form Components
-- **Button**: Versatile button with multiple variants
-- **Input**: Text input with validation support
-- **Textarea**: Multi-line text input
-- **Select**: Dropdown selection
-- **Checkbox**: Toggle selection
-- **Radio Group**: Single selection from options
-- **Switch**: Toggle switch
-- **Slider**: Value selection via slider
-- **Form**: Complete form handling with validation
+### フォームコンポーネント
+- **Button**: 複数のバリアントを持つ汎用的なボタン
+- **Input**: バリデーションサポート付きテキスト入力
+- **Textarea**: 複数行テキスト入力
+- **Select**: ドロップダウン選択
+- **Checkbox**: トグル選択
+- **Radio Group**: オプションからの単一選択
+- **Switch**: トグルスイッチ
+- **Slider**: スライダーによる値選択
+- **Form**: バリデーション付き完全なフォーム処理
 
-### Layout Components
-- **Card**: Content container with header/footer
-- **Separator**: Visual divider
-- **Tabs**: Tabbed navigation
-- **Accordion**: Collapsible content sections
-- **Sheet**: Slide-out panel
-- **Dialog**: Modal dialog
-- **Drawer**: Bottom drawer (mobile-friendly)
+### レイアウトコンポーネント
+- **Card**: ヘッダー/フッター付きコンテンツコンテナ
+- **Separator**: 視覚的な区切り線
+- **Tabs**: タブナビゲーション
+- **Accordion**: 折りたたみ可能なコンテンツセクション
+- **Sheet**: スライドアウトパネル
+- **Dialog**: モーダルダイアログ
+- **Drawer**: 下部ドロワー（モバイルフレンドリー）
 
-### Navigation Components
-- **Navigation Menu**: Accessible navigation
-- **Breadcrumb**: Hierarchical navigation
-- **Pagination**: Page navigation
-- **Menubar**: Application menubar
-- **Command**: Command palette/search
+### ナビゲーションコンポーネント
+- **Navigation Menu**: アクセシブルなナビゲーション
+- **Breadcrumb**: 階層ナビゲーション
+- **Pagination**: ページナビゲーション
+- **Menubar**: アプリケーションメニューバー
+- **Command**: コマンドパレット/検索
 
-### Feedback Components
-- **Alert**: Attention-grabbing messages
-- **Alert Dialog**: Confirmation dialogs
-- **Toast**: Temporary notifications
-- **Progress**: Progress indicator
-- **Skeleton**: Loading placeholders
-- **Spinner**: Loading spinner
-- **Badge**: Status indicators
+### フィードバックコンポーネント
+- **Alert**: 注目を集めるメッセージ
+- **Alert Dialog**: 確認ダイアログ
+- **Toast**: 一時的な通知
+- **Progress**: 進行状況インジケーター
+- **Skeleton**: ローディングプレースホルダー
+- **Spinner**: ローディングスピナー
+- **Badge**: ステータスインジケーター
 
-### Data Display
-- **Table**: Data tables
-- **Avatar**: User avatars
-- **Calendar**: Date selection
-- **Carousel**: Image/content carousel
-- **Chart**: Data visualization (with Recharts)
-- **Tooltip**: Contextual information
-- **Popover**: Floating content
-- **Hover Card**: Rich hover content
+### データ表示
+- **Table**: データテーブル
+- **Avatar**: ユーザーアバター
+- **Calendar**: 日付選択
+- **Carousel**: 画像/コンテンツカルーセル
+- **Chart**: データビジュアライゼーション（Recharts使用）
+- **Tooltip**: コンテキスト情報
+- **Popover**: フローティングコンテンツ
+- **Hover Card**: リッチなホバーコンテンツ
 
-### Utility Components
-- **Aspect Ratio**: Maintain aspect ratios
-- **Collapsible**: Expandable content
-- **Context Menu**: Right-click menus
-- **Dropdown Menu**: Action menus
-- **Scroll Area**: Custom scrollbars
-- **Resizable**: Resizable panels
-- **Toggle**: Toggle button
-- **Toggle Group**: Grouped toggles
+### ユーティリティコンポーネント
+- **Aspect Ratio**: アスペクト比の維持
+- **Collapsible**: 展開可能なコンテンツ
+- **Context Menu**: 右クリックメニュー
+- **Dropdown Menu**: アクションメニュー
+- **Scroll Area**: カスタムスクロールバー
+- **Resizable**: リサイズ可能なパネル
+- **Toggle**: トグルボタン
+- **Toggle Group**: グループ化されたトグル
 
-**Note**: Visit [ui.shadcn.com/docs/components](https://ui.shadcn.com/docs/components) for the complete list with live examples.
+**注意**: ライブ例を含む完全なリストは[ui.shadcn.com/docs/components](https://ui.shadcn.com/docs/components)をご覧ください。
 
-## Usage Examples
+## 使用例
 
-### Example 1: Adding and Using a Button
+### 例1: ボタンの追加と使用
 
-#### Step 1: Install the Button Component
+#### ステップ1: Buttonコンポーネントをインストール
 ```bash
 npx shadcn@latest add button
 ```
 
-#### Step 2: Use in Your Component
+#### ステップ2: コンポーネントで使用
 ```tsx
 // src/app/example/page.tsx
 import { Button } from "@/components/ui/button";
@@ -256,39 +256,39 @@ import { Button } from "@/components/ui/button";
 export default function ExamplePage() {
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-bold mb-4">Button Examples</h1>
+      <h1 className="text-2xl font-bold mb-4">ボタンの例</h1>
       
-      {/* Default button */}
-      <Button>Click me</Button>
+      {/* デフォルトボタン */}
+      <Button>クリック</Button>
       
-      {/* Different variants */}
-      <Button variant="secondary">Secondary</Button>
-      <Button variant="destructive">Delete</Button>
-      <Button variant="outline">Outline</Button>
-      <Button variant="ghost">Ghost</Button>
+      {/* 異なるバリアント */}
+      <Button variant="secondary">セカンダリ</Button>
+      <Button variant="destructive">削除</Button>
+      <Button variant="outline">アウトライン</Button>
+      <Button variant="ghost">ゴースト</Button>
       
-      {/* Different sizes */}
-      <Button size="sm">Small</Button>
-      <Button size="lg">Large</Button>
+      {/* 異なるサイズ */}
+      <Button size="sm">小</Button>
+      <Button size="lg">大</Button>
       
-      {/* With icon */}
+      {/* アイコン付き */}
       <Button>
         <svg className="mr-2 h-4 w-4" />
-        With Icon
+        アイコン付き
       </Button>
     </div>
   );
 }
 ```
 
-### Example 2: Creating a Form with Multiple Components
+### 例2: 複数のコンポーネントを使用したフォーム作成
 
-#### Step 1: Install Required Components
+#### ステップ1: 必要なコンポーネントをインストール
 ```bash
 npx shadcn@latest add form input button label
 ```
 
-#### Step 2: Create a Contact Form
+#### ステップ2: お問い合わせフォームを作成
 ```tsx
 // src/components/contact-form.tsx
 "use client";
@@ -306,46 +306,46 @@ export function ContactForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    console.log("フォーム送信:", formData);
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 max-w-md">
       <div className="space-y-2">
-        <Label htmlFor="name">Name</Label>
+        <Label htmlFor="name">名前</Label>
         <Input
           id="name"
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          placeholder="Enter your name"
+          placeholder="名前を入力"
         />
       </div>
       
       <div className="space-y-2">
-        <Label htmlFor="email">Email</Label>
+        <Label htmlFor="email">メールアドレス</Label>
         <Input
           id="email"
           type="email"
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          placeholder="Enter your email"
+          placeholder="メールアドレスを入力"
         />
       </div>
       
-      <Button type="submit">Submit</Button>
+      <Button type="submit">送信</Button>
     </form>
   );
 }
 ```
 
-### Example 3: Using Cards for Layout
+### 例3: レイアウトにCardを使用
 
-#### Step 1: Install Card Component
+#### ステップ1: Cardコンポーネントをインストール
 ```bash
 npx shadcn@latest add card
 ```
 
-#### Step 2: Create a Card Layout
+#### ステップ2: カードレイアウトを作成
 ```tsx
 // src/components/topic-card.tsx
 import {
@@ -373,12 +373,12 @@ export function TopicCard({ title, description, href }: TopicCardProps) {
       </CardHeader>
       <CardContent>
         <p className="text-sm text-muted-foreground">
-          Click below to start learning
+          下のボタンをクリックして学習を開始
         </p>
       </CardContent>
       <CardFooter>
         <Button asChild className="w-full">
-          <a href={href}>Start Learning</a>
+          <a href={href}>学習を開始</a>
         </Button>
       </CardFooter>
     </Card>
@@ -386,15 +386,15 @@ export function TopicCard({ title, description, href }: TopicCardProps) {
 }
 ```
 
-### Example 4: Adding Notifications with Toast
+### 例4: Toastで通知を追加
 
-#### Step 1: Install Toast and Sonner
+#### ステップ1: ToastとSonnerをインストール
 ```bash
 npx shadcn@latest add toast
 bun add sonner
 ```
 
-#### Step 2: Setup Toast Provider
+#### ステップ2: Toastプロバイダーを設定
 ```tsx
 // src/app/layout.tsx
 import { Toaster } from "@/components/ui/toaster";
@@ -411,7 +411,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 ```
 
-#### Step 3: Use Toast in Components
+#### ステップ3: コンポーネントでToastを使用
 ```tsx
 "use client";
 
@@ -425,20 +425,20 @@ export function NotificationExample() {
     <Button
       onClick={() => {
         toast({
-          title: "Success",
-          description: "Your changes have been saved.",
+          title: "成功",
+          description: "変更が保存されました。",
         });
       }}
     >
-      Show Notification
+      通知を表示
     </Button>
   );
 }
 ```
 
-### Example 5: Customizing Component Styles
+### 例5: コンポーネントスタイルのカスタマイズ
 
-You can customize components using the `cn()` utility:
+`cn()`ユーティリティを使用してコンポーネントをカスタマイズできます：
 
 ```tsx
 import { Button } from "@/components/ui/button";
@@ -454,26 +454,26 @@ export function CustomButton() {
         "transition-all duration-300"
       )}
     >
-      Custom Styled Button
+      カスタムスタイルボタン
     </Button>
   );
 }
 ```
 
-## Troubleshooting
+## トラブルシューティング
 
-### Common Issues and Solutions
+### よくある問題と解決策
 
-#### 1. "Module not found" Error
+#### 1. "Module not found"エラー
 
-**Problem**: 
+**問題**: 
 ```
 Error: Cannot find module '@/components/ui/button'
 ```
 
-**Solution**:
-- Verify the component file exists at `src/components/ui/button.tsx`
-- Check `tsconfig.json` has the path alias configured:
+**解決策**:
+- `src/components/ui/button.tsx`にコンポーネントファイルが存在することを確認
+- `tsconfig.json`にパスエイリアスが設定されているか確認：
   ```json
   {
     "compilerOptions": {
@@ -483,157 +483,157 @@ Error: Cannot find module '@/components/ui/button'
     }
   }
   ```
-- Restart your development server: `bun dev`
+- 開発サーバーを再起動：`bun dev`
 
-#### 2. TypeScript Errors with Component Props
+#### 2. コンポーネントプロパティのTypeScriptエラー
 
-**Problem**: 
+**問題**: 
 ```
 Type 'X' is not assignable to type 'Y'
 ```
 
-**Solution**:
-- Ensure you have the latest type definitions:
+**解決策**:
+- 最新の型定義があることを確認：
   ```bash
   bun add -d @types/react @types/react-dom
   ```
-- Check that your TypeScript version is compatible:
+- TypeScriptバージョンの互換性を確認：
   ```bash
   bun add -d typescript@latest
   ```
 
-#### 3. Styling Not Applied
+#### 3. スタイルが適用されない
 
-**Problem**: Components render but styles don't apply
+**問題**: コンポーネントはレンダリングされるがスタイルが適用されない
 
-**Solution**:
-- Verify TailwindCSS is properly configured in `src/app/globals.css`:
+**解決策**:
+- `src/app/globals.css`でTailwindCSSが正しく設定されているか確認：
   ```css
   @import "tailwindcss";
   ```
-- Check that your component uses the `cn()` utility correctly
-- Ensure CSS variables are defined in `globals.css`
-- Clear Next.js cache and rebuild:
+- コンポーネントが`cn()`ユーティリティを正しく使用しているか確認
+- `globals.css`でCSS変数が定義されているか確認
+- Next.jsキャッシュをクリアして再ビルド：
   ```bash
   rm -rf .next
   bun dev
   ```
 
-#### 4. Peer Dependency Warnings
+#### 4. ピア依存関係の警告
 
-**Problem**: 
+**問題**: 
 ```
 warning: peer dependency @radix-ui/react-* not installed
 ```
 
-**Solution**:
-- Install the missing peer dependency:
+**解決策**:
+- 不足しているピア依存関係をインストール：
   ```bash
-  bun add @radix-ui/react-[missing-package]
+  bun add @radix-ui/react-[不足パッケージ名]
   ```
-- Or reinstall the component:
+- またはコンポーネントを再インストール：
   ```bash
-  npx shadcn@latest add [component-name]
+  npx shadcn@latest add [コンポーネント名]
   ```
 
-#### 5. Import Errors with Biome Linter
+#### 5. Biomeリンターのインポートエラー
 
-**Problem**: 
+**問題**: 
 ```
 lint/style/useImportType: All these imports are only used as types
 ```
 
-**Solution**:
-- Run the formatter to auto-fix:
+**解決策**:
+- フォーマッターを実行して自動修正：
   ```bash
   bun run format
   ```
-- Or manually change imports to type imports:
+- または手動でtype importsに変更：
   ```tsx
   import type * as React from "react";
   ```
 
-#### 6. Component Not Updating After Changes
+#### 6. 変更後にコンポーネントが更新されない
 
-**Problem**: Changes to components don't reflect in the browser
+**問題**: コンポーネントへの変更がブラウザに反映されない
 
-**Solution**:
-- Stop the dev server (Ctrl+C)
-- Clear the Next.js cache:
+**解決策**:
+- 開発サーバーを停止（Ctrl+C）
+- Next.jsキャッシュをクリア：
   ```bash
   rm -rf .next
   ```
-- Restart the dev server:
+- 開発サーバーを再起動：
   ```bash
   bun dev
   ```
 
-#### 7. Bun vs npm Compatibility
+#### 7. Bunとnpmの互換性
 
-**Problem**: Some commands don't work with Bun
+**問題**: 一部のコマンドがBunで動作しない
 
-**Solution**:
-- For shadcn CLI, always use `npx`:
+**解決策**:
+- shadcn CLIには常に`npx`を使用：
   ```bash
-  npx shadcn@latest add button  # ✅ Correct
-  bunx shadcn@latest add button  # ❌ May not work
+  npx shadcn@latest add button  # ✅ 正しい
+  bunx shadcn@latest add button  # ❌ 動作しない可能性
   ```
-- For installing packages, use `bun add`:
+- パッケージのインストールには`bun add`を使用：
   ```bash
-  bun add lucide-react  # ✅ Correct
-  npm install lucide-react  # ❌ Mixing package managers
+  bun add lucide-react  # ✅ 正しい
+  npm install lucide-react  # ❌ パッケージマネージャーの混在
   ```
 
-#### 8. "use client" Directive Issues
+#### 8. "use client"ディレクティブの問題
 
-**Problem**: 
+**問題**: 
 ```
 Error: useState only works in Client Components
 ```
 
-**Solution**:
-- Add `"use client"` directive at the top of the file:
+**解決策**:
+- ファイルの先頭に`"use client"`ディレクティブを追加：
   ```tsx
   "use client";
   
   import { useState } from "react";
-  // ... rest of your component
+  // ... コンポーネントの残り
   ```
 
-## Best Practices
+## ベストプラクティス
 
-### 1. Component Organization
+### 1. コンポーネントの構成
 
 ```
 src/
 ├── components/
-│   ├── ui/              # shadcn/ui components (managed by CLI)
+│   ├── ui/              # shadcn/uiコンポーネント（CLIで管理）
 │   │   ├── button.tsx
 │   │   ├── card.tsx
 │   │   └── ...
-│   ├── layout/          # Layout components
+│   ├── layout/          # レイアウトコンポーネント
 │   │   ├── header.tsx
 │   │   └── footer.tsx
-│   └── features/        # Feature-specific components
+│   └── features/        # 機能固有のコンポーネント
 │       └── contact-form.tsx
 ```
 
-### 2. Importing Components
+### 2. コンポーネントのインポート
 
-Always use the `@/` alias for cleaner imports:
+よりクリーンなインポートのために常に`@/`エイリアスを使用：
 
 ```tsx
-// ✅ Good
+// ✅ 良い
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-// ❌ Avoid
+// ❌ 避ける
 import { Button } from "../../../components/ui/button";
 ```
 
-### 3. Customizing Components
+### 3. コンポーネントのカスタマイズ
 
-Create wrapper components instead of modifying shadcn/ui files directly:
+shadcn/uiファイルを直接変更するのではなく、ラッパーコンポーネントを作成：
 
 ```tsx
 // src/components/custom/primary-button.tsx
@@ -650,9 +650,9 @@ export function PrimaryButton({ className, ...props }) {
 }
 ```
 
-### 4. Type Safety
+### 4. 型安全性
 
-Always define prop types for your custom components:
+カスタムコンポーネントには常にプロパティの型を定義：
 
 ```tsx
 interface CustomCardProps {
@@ -668,33 +668,33 @@ export function CustomCard({
   children,
   className 
 }: CustomCardProps) {
-  // Component implementation
+  // コンポーネントの実装
 }
 ```
 
-### 5. Accessibility
+### 5. アクセシビリティ
 
-shadcn/ui components are built with accessibility in mind, but ensure you:
+shadcn/uiコンポーネントはアクセシビリティを考慮して構築されていますが、以下を確認してください：
 
-- Provide proper labels for form inputs
-- Use semantic HTML elements
-- Add ARIA attributes when needed
-- Test with keyboard navigation
-- Check color contrast ratios
+- フォーム入力に適切なラベルを提供
+- セマンティックなHTML要素を使用
+- 必要に応じてARIA属性を追加
+- キーボードナビゲーションでテスト
+- カラーコントラスト比を確認
 
-### 6. Performance
+### 6. パフォーマンス
 
-- Only install components you actually use
-- Use React Server Components (RSC) when possible
-- Add `"use client"` only when necessary (for hooks, events, etc.)
-- Lazy load large components:
+- 実際に使用するコンポーネントのみをインストール
+- 可能な限りReact Server Components（RSC）を使用
+- 必要な場合のみ`"use client"`を追加（フック、イベントなど）
+- 大きなコンポーネントを遅延ロード：
   ```tsx
   const HeavyComponent = dynamic(() => import("@/components/heavy-component"));
   ```
 
-### 7. Theming
+### 7. テーマ設定
 
-Leverage CSS variables for consistent theming:
+一貫したテーマのためにCSS変数を活用：
 
 ```css
 /* src/app/globals.css */
@@ -705,15 +705,15 @@ Leverage CSS variables for consistent theming:
 }
 ```
 
-### 8. Version Control
+### 8. バージョン管理
 
-- Commit `components.json` to track your configuration
-- Include `src/components/ui/` in version control
-- Add `node_modules/` and `.next/` to `.gitignore`
+- 設定を追跡するために`components.json`をコミット
+- `src/components/ui/`をバージョン管理に含める
+- `node_modules/`と`.next/`を`.gitignore`に追加
 
-## Additional Resources
+## 追加リソース
 
-### Official Documentation
+### 公式ドキュメント
 - [shadcn/ui Documentation](https://ui.shadcn.com/)
 - [shadcn/ui Components](https://ui.shadcn.com/docs/components)
 - [Radix UI Primitives](https://www.radix-ui.com/primitives)
@@ -721,20 +721,20 @@ Leverage CSS variables for consistent theming:
 - [Next.js 16 Documentation](https://nextjs.org/docs)
 - [Bun Documentation](https://bun.sh/docs)
 
-### Community Resources
+### コミュニティリソース
 - [shadcn/ui GitHub](https://github.com/shadcn-ui/ui)
 - [shadcn/ui Discord](https://discord.gg/shadcn-ui)
 - [Tailwind CSS Discord](https://discord.gg/tailwindcss)
 
-### Related Guides in This Project
-- [Architecture Documentation](./architecture.md)
-- [Requirements Definition](./rd.md)
-- [Screen Design](./screen_design.md)
+### このプロジェクトの関連ガイド
+- [アーキテクチャドキュメント](./architecture.md)
+- [要件定義](./rd.md)
+- [画面設計](./screen_design.md)
 
-## Conclusion
+## まとめ
 
-This guide covers the essential aspects of installing and using shadcn/ui components with Bun in this Next.js 16 project. The component library provides a solid foundation for building accessible, customizable, and performant UI components.
+このガイドでは、Next.js 16プロジェクトでBunを使用してshadcn/uiコンポーネントをインストールおよび使用する際の重要な側面を網羅しています。このコンポーネントライブラリは、アクセシブルでカスタマイズ可能、かつパフォーマンスの高いUIコンポーネントを構築するための強固な基盤を提供します。
 
-For project-specific questions or issues, please refer to the main [README.md](../README.md) or open an issue in the repository.
+プロジェクト固有の質問や問題については、メインの[README.md](../README.md)を参照するか、リポジトリでissueを開いてください。
 
 Happy coding! 🚀
