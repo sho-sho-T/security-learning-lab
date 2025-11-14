@@ -4,42 +4,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 export interface TheorySectionProps {
-  /**
-   * Section title displayed in h2 tag
-   */
   title: string;
-  /**
-   * Section content including text, code snippets, lists, and tables
-   */
   children: React.ReactNode;
-  /**
-   * Optional anchor link id for deep linking
-   */
   id?: string;
-  /**
-   * Optional additional CSS classes
-   */
   className?: string;
 }
 
 /**
- * TheorySection component for displaying educational content sections
- * in the XSS learning page.
- *
- * Features:
- * - Semantic HTML with section and h2 tags
- * - Support for rich content (code snippets, lists, tables)
- * - Responsive design with Tailwind CSS
- * - Accessible with proper ARIA attributes
- * - Styled with shadcn/ui Card components
- *
- * @example
- * ```tsx
- * <TheorySection title="What is XSS?" id="what-is-xss">
- *   <p>Cross-Site Scripting (XSS) is a security vulnerability...</p>
- *   <pre><code>{'<script>alert("XSS")</script>'}</code></pre>
- * </TheorySection>
- * ```
+ * XSS学習ページの教育コンテンツセクションを表示するコンポーネント
  */
 export function TheorySection({
   title,

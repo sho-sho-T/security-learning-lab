@@ -1,90 +1,81 @@
 import { TheorySection } from "@/components/xss/TheorySection";
 
 /**
- * Example usage of TheorySection component
- * This file demonstrates how to use the TheorySection component
- * in the XSS learning page.
+ * TheorySectionコンポーネントの使用例
  */
-
 export function TheorySectionExample() {
   return (
     <div className="container mx-auto px-4 py-8">
-      {/* Basic usage with title and simple content */}
-      <TheorySection title="What is XSS?" id="what-is-xss">
+      <TheorySection title="XSSとは？" id="what-is-xss">
         <p>
-          Cross-Site Scripting (XSS) is a security vulnerability that allows
-          attackers to inject malicious scripts into web pages viewed by other
-          users.
+          クロスサイトスクリプティング（XSS）は、攻撃者が悪意のあるスクリプトを
+          他のユーザーが閲覧するWebページに挿入できるセキュリティ脆弱性です。
         </p>
       </TheorySection>
 
-      {/* Usage with code snippets */}
-      <TheorySection title="XSS Attack Example" id="xss-example">
-        <p>Here's a simple example of an XSS attack:</p>
+      <TheorySection title="XSS攻撃の例" id="xss-example">
+        <p>XSS攻撃の簡単な例：</p>
         <pre className="bg-zinc-900 text-zinc-50 p-4 rounded-lg overflow-x-auto">
-          <code>{'<script>alert("XSS Attack!")</script>'}</code>
+          <code>{'<script>alert("XSS攻撃！")</script>'}</code>
         </pre>
         <p className="mt-4">
-          This script, when injected into a vulnerable page, will execute in the
-          victim's browser.
+          このスクリプトは脆弱なページに挿入されると、被害者のブラウザで実行されます。
         </p>
       </TheorySection>
 
-      {/* Usage with lists */}
-      <TheorySection title="Types of XSS" id="xss-types">
-        <p>There are three main types of XSS attacks:</p>
+      <TheorySection title="XSSの種類" id="xss-types">
+        <p>XSS攻撃には主に3つの種類があります：</p>
         <ul className="list-disc pl-6 space-y-2">
           <li>
-            <strong>Reflected XSS</strong>: The malicious script is reflected
-            off the web server
+            <strong>反射型XSS</strong>:
+            悪意のあるスクリプトがWebサーバーから反射される
           </li>
           <li>
-            <strong>Stored XSS</strong>: The malicious script is permanently
-            stored on the target server
+            <strong>蓄積型XSS</strong>:
+            悪意のあるスクリプトが対象サーバーに永続的に保存される
           </li>
           <li>
-            <strong>DOM-based XSS</strong>: The vulnerability exists in
-            client-side code
+            <strong>DOM based XSS</strong>:
+            脆弱性がクライアント側のコードに存在する
           </li>
         </ul>
       </TheorySection>
 
-      {/* Usage with table */}
-      <TheorySection title="XSS Prevention Methods" id="xss-prevention">
+      <TheorySection title="XSS対策方法" id="xss-prevention">
         <table className="min-w-full border-collapse border border-zinc-300 dark:border-zinc-700">
           <thead>
             <tr className="bg-zinc-100 dark:bg-zinc-800">
               <th className="border border-zinc-300 dark:border-zinc-700 px-4 py-2">
-                Method
+                方法
               </th>
               <th className="border border-zinc-300 dark:border-zinc-700 px-4 py-2">
-                Description
+                説明
               </th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td className="border border-zinc-300 dark:border-zinc-700 px-4 py-2">
-                Input Validation
+                入力検証
               </td>
               <td className="border border-zinc-300 dark:border-zinc-700 px-4 py-2">
-                Validate and sanitize all user input
-              </td>
-            </tr>
-            <tr>
-              <td className="border border-zinc-300 dark:border-zinc-700 px-4 py-2">
-                Output Encoding
-              </td>
-              <td className="border border-zinc-300 dark:border-zinc-700 px-4 py-2">
-                Encode data before rendering to the page
+                すべてのユーザー入力を検証・サニタイズする
               </td>
             </tr>
             <tr>
               <td className="border border-zinc-300 dark:border-zinc-700 px-4 py-2">
-                Content Security Policy
+                出力エンコーディング
               </td>
               <td className="border border-zinc-300 dark:border-zinc-700 px-4 py-2">
-                Use CSP headers to prevent script execution
+                ページにレンダリングする前にデータをエンコードする
+              </td>
+            </tr>
+            <tr>
+              <td className="border border-zinc-300 dark:border-zinc-700 px-4 py-2">
+                コンテンツセキュリティポリシー
+              </td>
+              <td className="border border-zinc-300 dark:border-zinc-700 px-4 py-2">
+                CSPヘッダーを使用してスクリプト実行を防止する
               </td>
             </tr>
           </tbody>

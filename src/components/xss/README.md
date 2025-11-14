@@ -1,105 +1,101 @@
-# TheorySection Component
+# TheorySection コンポーネント
 
-A reusable, accessible component for displaying educational content sections in the XSS learning page.
+XSS学習ページの教育コンテンツセクションを表示する再利用可能なコンポーネント。
 
-## Features
+## 機能
 
-- ✅ **Semantic HTML**: Uses `<section>` and `<h2>` tags for proper document structure
-- ✅ **Accessible**: Includes proper ARIA attributes (aria-labelledby) for screen readers
-- ✅ **Responsive Design**: Built with Tailwind CSS for mobile-first responsive layouts
-- ✅ **Rich Content Support**: Handles text, code snippets, lists, and tables
-- ✅ **Styled with shadcn/ui**: Uses Card components for consistent styling
-- ✅ **Typography**: Includes prose classes for readable content
-- ✅ **Dark Mode**: Supports light and dark themes
-- ✅ **TypeScript**: Fully typed with comprehensive prop definitions
+- ✅ **セマンティックHTML**: `<section>`と`<h2>`タグを使用した適切な文書構造
+- ✅ **アクセシビリティ**: スクリーンリーダー用のARIA属性
+- ✅ **レスポンシブデザイン**: Tailwind CSSによるモバイルファーストレイアウト
+- ✅ **リッチコンテンツサポート**: テキスト、コードスニペット、リスト、テーブルに対応
+- ✅ **shadcn/ui**: 一貫したスタイリングのためのCardコンポーネントを使用
+- ✅ **タイポグラフィ**: 読みやすいコンテンツのためのproseクラス
+- ✅ **ダークモード**: ライトテーマとダークテーマをサポート
+- ✅ **TypeScript**: 型定義による型安全性
 
 ## Props
 
-| Prop | Type | Required | Description |
+| Prop | 型 | 必須 | 説明 |
 |------|------|----------|-------------|
-| `title` | `string` | Yes | Section title displayed in h2 tag |
-| `children` | `React.ReactNode` | Yes | Section content (text, code, lists, tables) |
-| `id` | `string` | No | Optional anchor link id for deep linking |
-| `className` | `string` | No | Optional additional CSS classes |
+| `title` | `string` | はい | h2タグに表示されるセクションタイトル |
+| `children` | `React.ReactNode` | はい | セクションコンテンツ（テキスト、コード、リスト、テーブル） |
+| `id` | `string` | いいえ | ディープリンク用のアンカーリンクID |
+| `className` | `string` | いいえ | 追加のCSSクラス |
 
-## Usage
+## 使用例
 
-### Basic Example
+### 基本的な使い方
 
 ```tsx
 import { TheorySection } from "@/components/xss";
 
 function MyPage() {
   return (
-    <TheorySection title="What is XSS?" id="what-is-xss">
+    <TheorySection title="XSSとは？" id="what-is-xss">
       <p>
-        Cross-Site Scripting (XSS) is a security vulnerability that allows
-        attackers to inject malicious scripts into web pages viewed by other users.
+        クロスサイトスクリプティング（XSS）は、攻撃者が悪意のあるスクリプトを
+        他のユーザーが閲覧するWebページに挿入できるセキュリティ脆弱性です。
       </p>
     </TheorySection>
   );
 }
 ```
 
-### With Code Snippets
+### コードスニペット付き
 
 ```tsx
-<TheorySection title="XSS Attack Example" id="xss-example">
-  <p>Here's a simple example of an XSS attack:</p>
+<TheorySection title="XSS攻撃の例" id="xss-example">
+  <p>XSS攻撃の簡単な例：</p>
   <pre className="bg-zinc-900 text-zinc-50 p-4 rounded-lg overflow-x-auto">
-    <code>{'<script>alert("XSS Attack!")</script>'}</code>
+    <code>{'<script>alert("XSS攻撃！")</script>'}</code>
   </pre>
   <p className="mt-4">
-    This script, when injected into a vulnerable page, will execute in the
-    victim's browser.
+    このスクリプトは脆弱なページに挿入されると、被害者のブラウザで実行されます。
   </p>
 </TheorySection>
 ```
 
-### With Lists
+### リスト付き
 
 ```tsx
-<TheorySection title="Types of XSS" id="xss-types">
-  <p>There are three main types of XSS attacks:</p>
+<TheorySection title="XSSの種類" id="xss-types">
+  <p>XSS攻撃には主に3つの種類があります：</p>
   <ul className="list-disc pl-6 space-y-2">
     <li>
-      <strong>Reflected XSS</strong>: The malicious script is reflected off
-      the web server
+      <strong>反射型XSS</strong>: 悪意のあるスクリプトがWebサーバーから反射される
     </li>
     <li>
-      <strong>Stored XSS</strong>: The malicious script is permanently
-      stored on the target server
+      <strong>蓄積型XSS</strong>: 悪意のあるスクリプトが対象サーバーに永続的に保存される
     </li>
     <li>
-      <strong>DOM-based XSS</strong>: The vulnerability exists in
-      client-side code
+      <strong>DOM based XSS</strong>: 脆弱性がクライアント側のコードに存在する
     </li>
   </ul>
 </TheorySection>
 ```
 
-### With Tables
+### テーブル付き
 
 ```tsx
-<TheorySection title="XSS Prevention Methods" id="xss-prevention">
+<TheorySection title="XSS対策方法" id="xss-prevention">
   <table className="min-w-full border-collapse border border-zinc-300 dark:border-zinc-700">
     <thead>
       <tr className="bg-zinc-100 dark:bg-zinc-800">
         <th className="border border-zinc-300 dark:border-zinc-700 px-4 py-2">
-          Method
+          方法
         </th>
         <th className="border border-zinc-300 dark:border-zinc-700 px-4 py-2">
-          Description
+          説明
         </th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td className="border border-zinc-300 dark:border-zinc-700 px-4 py-2">
-          Input Validation
+          入力検証
         </td>
         <td className="border border-zinc-300 dark:border-zinc-700 px-4 py-2">
-          Validate and sanitize all user input
+          すべてのユーザー入力を検証・サニタイズする
         </td>
       </tr>
     </tbody>
@@ -107,54 +103,54 @@ function MyPage() {
 </TheorySection>
 ```
 
-### Custom Styling
+### カスタムスタイリング
 
 ```tsx
 <TheorySection 
-  title="Advanced Topic" 
+  title="応用トピック" 
   id="advanced"
   className="mb-12 border-2 border-primary"
 >
-  <p>Custom styled section with additional spacing and border.</p>
+  <p>追加のスペーシングとボーダーを持つカスタムスタイルのセクション。</p>
 </TheorySection>
 ```
 
-## Accessibility
+## アクセシビリティ
 
-The component follows accessibility best practices:
+このコンポーネントはアクセシビリティのベストプラクティスに従っています：
 
-1. **Semantic HTML**: Uses proper `<section>` and heading tags
-2. **ARIA Labels**: Links section to its heading using `aria-labelledby`
-3. **Keyboard Navigation**: All interactive elements are keyboard accessible
-4. **Screen Reader Friendly**: Proper document structure and ARIA attributes
+1. **セマンティックHTML**: 適切な`<section>`と見出しタグを使用
+2. **ARIAラベル**: `aria-labelledby`を使用してセクションと見出しをリンク
+3. **キーボードナビゲーション**: すべてのインタラクティブ要素がキーボードアクセス可能
+4. **スクリーンリーダー対応**: 適切な文書構造とARIA属性
 
-## Styling
+## スタイリング
 
-The component uses:
+このコンポーネントは以下を使用しています：
 
-- **Tailwind CSS** for utility-first styling
-- **shadcn/ui Card** components for consistent design
-- **Prose classes** for typography (prose-stone, dark:prose-invert)
-- **Responsive spacing** with mb-8 (margin-bottom: 2rem)
-- **Dark mode support** with dark: variants
+- **Tailwind CSS** ユーティリティファーストスタイリング
+- **shadcn/ui Card** 一貫したデザインのためのコンポーネント
+- **Proseクラス** タイポグラフィ用（prose-stone、dark:prose-invert）
+- **レスポンシブスペーシング** mb-8（margin-bottom: 2rem）
+- **ダークモードサポート** dark:バリアント
 
-## Implementation Details
+## 実装の詳細
 
-- Built with React Server Components (RSC) in mind
-- TypeScript for type safety
-- Passes Biome linting with no errors
-- No runtime dependencies beyond React and existing UI components
-- Fully compatible with Next.js 16 App Router
+- React Server Components（RSC）を考慮した設計
+- 型安全性のためのTypeScript
+- Biomeリンティングエラーなし
+- Reactおよび既存UIコンポーネント以外のランタイム依存関係なし
+- Next.js 16 App Routerと完全互換
 
-## File Structure
+## ファイル構造
 
 ```
 src/components/xss/
-├── TheorySection.tsx       # Main component
-├── TheorySectionExample.tsx # Usage examples
-└── index.ts                # Exports
+├── TheorySection.tsx       # メインコンポーネント
+├── TheorySectionExample.tsx # 使用例
+└── index.ts                # エクスポート
 ```
 
-## License
+## ライセンス
 
-Part of the Security Learning Lab project.
+Security Learning Labプロジェクトの一部。
