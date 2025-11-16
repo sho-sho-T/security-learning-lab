@@ -1,6 +1,6 @@
 import type * as React from "react";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 export interface TheorySectionProps {
@@ -27,14 +27,12 @@ export function TheorySection({
     >
       <Card className="overflow-hidden">
         <CardHeader>
-          <CardTitle asChild>
-            <h2
-              id={id ? `${id}-title` : undefined}
-              className="text-2xl font-bold tracking-tight"
-            >
-              {title}
-            </h2>
-          </CardTitle>
+          <h2
+            id={id ? `${id}-title` : undefined}
+            className="text-2xl font-bold tracking-tight leading-none font-semibold"
+          >
+            {title}
+          </h2>
         </CardHeader>
         <CardContent className="prose prose-stone dark:prose-invert max-w-none">
           {children}
