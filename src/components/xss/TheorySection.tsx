@@ -11,7 +11,7 @@ export interface TheorySectionProps {
 }
 
 /**
- * XSS学習ページの教育コンテンツセクションを表示するコンポーネント
+ * 学習ページの教育コンテンツセクションを表示するコンポーネント
  */
 export function TheorySection({
   title,
